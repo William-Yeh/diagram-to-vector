@@ -1,0 +1,142 @@
+{
+  "diagramType": "architecture",
+  "title": "Build once, promote",
+  "overallConfidence": 0.92,
+  "nodes": [
+    {
+      "id": "source",
+      "type": "rectangle",
+      "label": "Source",
+      "x": 50,
+      "y": 100,
+      "width": 80,
+      "height": 40,
+      "confidence": 0.95
+    },
+    {
+      "id": "build",
+      "type": "ellipse",
+      "label": "Build",
+      "x": 180,
+      "y": 100,
+      "width": 80,
+      "height": 40,
+      "confidence": 0.95
+    },
+    {
+      "id": "artifact",
+      "type": "rectangle",
+      "label": "Artifact",
+      "x": 310,
+      "y": 100,
+      "width": 80,
+      "height": 40,
+      "style": {
+        "fillColor": "#fff3cd",
+        "strokeColor": "#856404"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "artifact_dev",
+      "type": "rectangle",
+      "label": "Artifact",
+      "x": 100,
+      "y": 250,
+      "width": 80,
+      "height": 40,
+      "style": {
+        "fillColor": "#fff3cd",
+        "strokeColor": "#856404"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "artifact_stage",
+      "type": "rectangle",
+      "label": "Artifact",
+      "x": 250,
+      "y": 250,
+      "width": 80,
+      "height": 40,
+      "style": {
+        "fillColor": "#fff3cd",
+        "strokeColor": "#856404"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "artifact_prod",
+      "type": "rectangle",
+      "label": "Artifact",
+      "x": 400,
+      "y": 250,
+      "width": 80,
+      "height": 40,
+      "style": {
+        "fillColor": "#fff3cd",
+        "strokeColor": "#856404"
+      },
+      "confidence": 0.95
+    }
+  ],
+  "edges": [
+    {
+      "id": "source_to_build",
+      "from": "source",
+      "to": "build",
+      "type": "arrow",
+      "confidence": 0.95
+    },
+    {
+      "id": "build_to_artifact",
+      "from": "build",
+      "to": "artifact",
+      "type": "arrow",
+      "confidence": 0.95
+    },
+    {
+      "id": "artifact_to_dev",
+      "from": "artifact",
+      "to": "artifact_dev",
+      "type": "arrow",
+      "style": {
+        "strokeStyle": "dashed"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "dev_to_stage",
+      "from": "artifact_dev",
+      "to": "artifact_stage",
+      "label": "Promote",
+      "type": "arrow",
+      "confidence": 0.95
+    },
+    {
+      "id": "stage_to_prod",
+      "from": "artifact_stage",
+      "to": "artifact_prod",
+      "label": "Promote",
+      "type": "arrow",
+      "confidence": 0.95
+    }
+  ],
+  "groups": [
+    {
+      "id": "dev_env",
+      "label": "DEV",
+      "nodeIds": ["artifact_dev"]
+    },
+    {
+      "id": "stage_env",
+      "label": "STAGE",
+      "nodeIds": ["artifact_stage"]
+    },
+    {
+      "id": "prod_env",
+      "label": "PRODUCTION",
+      "nodeIds": ["artifact_prod"]
+    }
+  ]
+}
