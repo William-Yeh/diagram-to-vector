@@ -52,7 +52,13 @@ See [SKILL.md](SKILL.md) for complete documentation including:
 
 ## Claude Code Skill
 
-This repository is also a Claude Code skill. Install it to enable diagram conversion directly from Claude Code conversations.
+Install as a Claude Code skill to enable diagram conversion directly in conversations:
+
+```bash
+npx @anthropic-ai/claude-code-skills add github:William-Yeh/diagram-to-vector
+```
+
+Then use `/diagram-to-vector` in Claude Code to convert diagrams.
 
 ## Author
 
